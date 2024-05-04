@@ -38,5 +38,16 @@ public class VersioningPersonController {
         return new PersonV2(new Name("Naresh", "Nunna"));
     }
 
+    //mediaType versioning (a.k.a "content negotiation" or "accept-header") - GitHub
+
+    @GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v1+json")
+    public PersonV1 getFirstVersionOfPersonMediaType() {
+        return new PersonV1("Steeve Jobs");
+    }
+
+    @GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v2+json")
+    public PersonV2 getSecondVersionOfPersonMediaType() {
+        return new PersonV2(new Name("Naresh", "Nunna"));
+    }
 
 }
