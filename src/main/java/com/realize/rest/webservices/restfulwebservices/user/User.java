@@ -1,20 +1,23 @@
 package com.realize.rest.webservices.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
 public class User {
-    @Size(min = 4, message = "Name must be at least 4 characters long")
-    private String name;
     private int id;
+    @Size(min = 4, message = "Name must be at least 4 characters long")
+    @JsonProperty("user_name")
+    private String name;
     @Past(message = "Please enter a valid date in the past")
+    @JsonProperty("birth_date")
     private LocalDate birthDate;
 
     public User(String name, int id, LocalDate birthDate) {
-        this.name = name;
         this.id = id;
+        this.name = name;
         this.birthDate = birthDate;
     }
 
